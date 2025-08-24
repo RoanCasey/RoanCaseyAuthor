@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roan Fletcher — Writer</title>
+  <meta name="description" content="Contemporary fantasy & magical realism by Roan Fletcher." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Swap Lato for Work Sans by changing the family below -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f0f13;     /* near-black with a hint of blue */
+      --card: #15151c;   /* panel background */
+      --text: #e9e9f0;   /* main text */
+      --muted: #b7b7c6;  /* secondary text */
+      --accent: #7f6cff; /* subtle violet */
+      --accent-2: #9ad1ff; /* moonlit blue */
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 10px rgba(0,0,0,.25);
+    }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; color:var(--text); background: radial-gradient(1200px 800px at 10% -10%, rgba(127,108,255,.08), transparent 60%),
+                                  radial-gradient(900px 700px at 110% 10%, rgba(154,209,255,.06), transparent 60%),
+                                  var(--bg);
+      font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      line-height:1.65;
+    }
+    h1,h2,h3{font-family:'Spectral', Georgia, "Times New Roman", serif; letter-spacing:.2px;}
+    h1{font-weight:700; font-size:clamp(2rem, 4vw + 1rem, 3.2rem); line-height:1.12;}
+    h2{font-weight:600; font-size:clamp(1.4rem, 1.2vw + 1rem, 2rem);} 
+    p{max-width:70ch}
+
+    /* Layout */
+    .container{max-width:1100px; padding:0 20px; margin:0 auto;}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px); background:rgba(15,15,19,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text)}
+    .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 210deg, var(--accent), var(--accent-2)); box-shadow:0 0 30px rgba(127,108,255,.35) inset}
+    .brand span{font-family:'Spectral',serif; font-weight:600; letter-spacing:.3px}
+    .nav-links{display:flex; gap:18px}
+    .nav-links a{color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem}
+    .nav-links a:hover{color:var(--text)}
+    .menu-btn{display:none; background:none; border:1px solid rgba(255,255,255,.15); color:var(--text); padding:8px 10px; border-radius:10px}
+
+    /* Hero */
+    .hero{padding:80px 0 50px}
+    .hero .split{display:grid; grid-template-columns:1.4fr 1fr; gap:36px; align-items:center}
+    .tag{display:inline-block; padding:6px 10px; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:.8rem; color:var(--muted)}
+    .lead{font-size:1.2rem; color:var(--muted)}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .card.pad{padding:22px}
+
+    /* Sections */
+    section{padding:50px 0}
+    .grid{display:grid; gap:22px}
+    .two{grid-template-columns:1fr 1fr}
+    .three{grid-template-columns:repeat(3, 1fr)}
+
+    /* Lists */
+    .list{display:grid; gap:12px}
+    .list li{list-style:none}
+
+    /* Buttons */
+    .btn{display:inline-block; text-decoration:none; color:var(--bg); background:linear-gradient(135deg,var(--accent),var(--accent-2)); padding:10px 16px; border-radius:12px; font-weight:700}
+    .btn.alt{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.16)}
+
+    /* Footer */
+    footer{padding:30px 0 60px; color:var(--muted); font-size:.95rem}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero .split{grid-template-columns:1fr}
+      .two, .three{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .menu-btn{display:inline-block}
+    }
+    .nav-open .nav-links{display:flex; flex-direction:column; position:absolute; left:0; right:0; top:60px; background:rgba(15,15,19,.96); padding:14px 20px; border-bottom:1px solid rgba(255,255,255,.1)}
+
+    /* Accessibility helpers */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header class="nav" role="navigation" aria-label="Primary">
+    <div class="container nav-inner">
+      <a href="#" class="brand" aria-label="Home">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span>Roan Fletcher</span>
+      </a>
+      <nav>
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu" id="menuToggle">Menu</button>
+        <div class="nav-links" id="menu">
+          <a href="#about">About</a>
+          <a href="#work">Writing</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div class="split">
+          <div>
+            <span class="tag">Contemporary Fantasy • Magical Realism</span>
+            <h1>Stories that open a door to the uncanny—and ask what we owe each other on the other side.</h1>
+            <p class="lead">I’m Roan, a writer of contemporary fantasy and magical realism. My work explores intergenerational memory, strange doors, and the quiet magic of everyday choices.
+            </p>
+            <div style="display:flex; gap:12px; margin-top:14px">
+              <a class="btn" href="#work">Read a sample</a>
+              <a class="btn alt" href="#contact">Get in touch</a>
+            </div>
+          </div>
+          <aside>
+            <div class="card pad">
+              <h2 style="margin-top:0">Current Project</h2>
+              <p><strong><em>Keeper of Nowhere</em></strong> — a contemporary fantasy set in a ghost town in the Adirondacks. Doors, time, and a lineage of witches collide with a cult called the Nightmare Institute.</p>
+              <ul class="list" aria-label="Stats">
+                <li>• Status: Line edits (98k → 95k)</li>
+                <li>• Comp titles: <em>Practical Magic</em>, <em>The Night Circus</em>, <em>The Ocean at the End of the Lane</em></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container grid two">
+        <div class="card pad">
+          <h2>About</h2>
+          <p>BA in English (Psych minor). MFA-track writer, AI trainer, and recovering film-school editor. I believe in empathy, good tea, and stories that make the ordinary feel newly haunted.</p>
+          <p class="muted">Short bio available on request for festival/agent pages.</p>
+        </div>
+        <div class="card pad">
+          <h2>Focus & Themes</h2>
+          <ul class="list">
+            <li>• Intergenerational memory & inheritance</li>
+            <li>• Folklore textures in contemporary life</li>
+            <li>• Found family, boundaries, and belonging</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="card pad">
+          <h2>Writing</h2>
+          <div class="grid two">
+            <article>
+              <h3><em>Keeper of Nowhere</em> (Novel)</h3>
+              <p>Contemporary fantasy • 95–100k. A transgender protagonist, a door to Nowhere, and a battle with the Nightmare Institute. Excerpt available on request.</p>
+            </article>
+            <article>
+              <h3>Short Fiction & Essays</h3>
+              <ul class="list">
+                <li>• “Birds in Macdonald & McKay” — ecocritical essay (excerpt)</li>
+                <li>• “Hecate Deals the Cards” — mythic flash (published/placed TBD)</li>
+                <li>• “The Christmas Lights” — personal essay in progress</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <div class="card pad">
+          <h2>News</h2>
+          <ul class="list">
+            <li>• Aug 2025 — Querying <em>Keeper of Nowhere</em>.</li>
+            <li>• Spring 2026 — Creative Nonfiction course; essay forthcoming.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card pad">
+          <h2>Contact</h2>
+          <p>For queries, requests, or rights, email <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap">
+        <span>© <span id="year"></span> Roan Fletcher</span>
+        <span>Set in <em>Spectral</em> & <em>Lato</em>. <a href="#" style="color:var(--accent-2)">Download press bio</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+    toggle?.addEventListener('click', () => {
+      const open = document.body.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
